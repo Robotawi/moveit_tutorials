@@ -21,7 +21,7 @@ The steps of setting multiple arms environments to use MoveIt motion planning ar
 
 3. Write the ros controllers configuration and launch files for the multiple arms. 
 
-4. Integrate the simulation in Gazebo with MoveIt motion planning.
+4. (Optional) Integrate the simulation in Gazebo with MoveIt motion planning.
 
 5. Plan arms motions with MoveIt Move Group Interface.
 
@@ -32,12 +32,13 @@ This tutorial explains every step to help set up your multiple robot arms enviro
 
 The Panda robot arm is used in the following explanation, but the same applies to preparing other types of robot arms.
 
-To start building your multiple arms model, create a new ``panda_multiple_arms`` package as follows: :: 
+To start building your multiple arms model, create a new package (e.g. ``panda_multiple_arms``) as follows: :: 
 
     cd ~/ws_moveit
     catkin create pkg panda_multiple_arms
     cd panda_multiple_arms
     mkdir robot_description
+    cd robot_description
     touch panda_multiple_arms.xacro
 
 To prepare your multiple robot arms xacro file (model), you need to have the single arm's xacro file. In the following part, we will build a multiple arms panda robot description file consisting of two identical arms.
@@ -77,7 +78,7 @@ At this point, it is recommended to check our xacro model is working as expected
     cd ~ws_moveit
     catkin build 
     source devel/setup.bash
-    roscd dual_panda_arms/robot_description
+    roscd panda_multiple_arms/robot_description
     rosrun xacro xacro panda_multiple_arms.xacro -o panda_multiple_arms.urdf
     check_urdf panda_multiple_arms.urdf
 
@@ -167,7 +168,7 @@ MoveIt Setup Assistant is used to configure our multiple robot arms for using th
 Follow the MoveIt Setup Assistant tutorial to configure the arms. Note that we will be making a separate move group for each arm and hand. The groups are called ``rgt_arm``, ``lft_arm``, ``rgt_hand``, and ``lft_hand``. 
 
 
-I want to consider two more point along with the the Setup Assistant tutorial 
+Let's consider two more points along with the the Setup Assistant tutorial 
 
 1. Define a practical `ready` pose for both arms with joint values {0.0, -0.785, 0.0, -2.356, 0.0, 1.571, 0.785}.
 
@@ -178,13 +179,13 @@ The arms should look as follows at the `ready` pose.
    :align: center
 
 
-1. Define ``open`` and ``close`` poses for the ``rgt_hand`` and ``lft_hand`` move groups. The ``open`` pose with joint1 value set to 0.35, and the ``close`` has the joint1 set to 0.0. Notice that the hand joint2 mimics the value of joint1.  Therefore, there is no need to fix joint2 in the hand move_group poses.  The defined poses for the arms and hand can be as follows. You can add other poses of interest for the arms, if needed.
+2. Define ``open`` and ``close`` poses for the ``rgt_hand`` and ``lft_hand`` move groups. The ``open`` pose with joint1 value set to 0.35, and the ``close`` has the joint1 set to 0.0. Notice that the hand joint2 mimics the value of joint1.  Therefore, there is no need to fix joint2 in the hand move_group poses.  The defined poses for the arms and hand can be as follows. You can add other poses of interest for the arms, if needed.
 
 .. image:: images/move_groups_poses.png
    :width: 500pt
    :align: center
 
-Name the Moveit config package ``panda_multiple_arms_moveit_config`` and generate the files using the Setup Assistant. 
+Name the Moveit config package, e.g. ``panda_multiple_arms_moveit_config``, and generate the files using the Setup Assistant. 
 
 Step 3: Write the ros controllers configuration and launch files for the multiple arms 
 --------------------------------------------------------------------------------------
