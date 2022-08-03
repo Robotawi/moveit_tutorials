@@ -206,12 +206,9 @@ In the following configuration files, the controllers names are ``joint_state_co
 
 2. Open the ``joint_state_controller.yaml`` and copy the controller configuration to it ::
 
-    panda_multiple_arms:
     joint_state_controller:
         type: joint_state_controller/JointStateController
         publish_rate: 50  
-
-- The joint trajectory controller: 
 
 3. Create the controller configuration file ``trajectory_controller.yaml`` in the ``panda_multiple_arms/config`` package as follows::
 
@@ -220,72 +217,71 @@ In the following configuration files, the controllers names are ``joint_state_co
     mkdir config
     touch trajectory_controller.yaml 
 
-
 4. Open the ``trajectory_controller.yaml`` and copy the controller configuration to it ::
 
     rgt_arm_trajectory_controller:
-    type: "position_controllers/JointTrajectoryController"
-    joints:
-        - rgt_arm_joint1
-        - rgt_arm_joint2
-        - rgt_arm_joint3
-        - rgt_arm_joint4
-        - rgt_arm_joint5
-        - rgt_arm_joint6
-        - rgt_arm_joint7
-    constraints:
-        goal_time: 0.6
-        stopped_velocity_tolerance: 0.05
-        rgt_arm_joint1: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint2: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint3: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint4: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint5: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint6: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint7: {trajectory: 0.1, goal: 0.1}
-    stop_trajectory_duration: 0.5
-    state_publish_rate:  25
-    action_monitor_rate: 10
+       type: "position_controllers/JointTrajectoryController"
+       joints:
+           - rgt_arm_joint1
+           - rgt_arm_joint2
+           - rgt_arm_joint3
+           - rgt_arm_joint4
+           - rgt_arm_joint5
+           - rgt_arm_joint6
+           - rgt_arm_joint7
+       constraints:
+           goal_time: 0.6
+           stopped_velocity_tolerance: 0.05
+           rgt_arm_joint1: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint2: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint3: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint4: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint5: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint6: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint7: {trajectory: 0.1, goal: 0.1}
+       stop_trajectory_duration: 0.5
+       state_publish_rate:  25
+       action_monitor_rate: 10
 
     lft_arm_trajectory_controller:
-    type: "position_controllers/JointTrajectoryController"
-    joints:
-        - lft_arm_joint1
-        - lft_arm_joint2
-        - lft_arm_joint3
-        - lft_arm_joint4
-        - lft_arm_joint5
-        - lft_arm_joint6
-        - lft_arm_joint7
-    constraints:
-        goal_time: 0.6
-        stopped_velocity_tolerance: 0.05
-        lft_arm_joint1: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint2: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint3: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint4: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint5: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint6: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint7: {trajectory: 0.1, goal: 0.1}
-    stop_trajectory_duration: 0.5
-    state_publish_rate:  25
-    action_monitor_rate: 10
+       type: "position_controllers/JointTrajectoryController"
+       joints:
+           - lft_arm_joint1
+           - lft_arm_joint2
+           - lft_arm_joint3
+           - lft_arm_joint4
+           - lft_arm_joint5
+           - lft_arm_joint6
+           - lft_arm_joint7
+       constraints:
+           goal_time: 0.6
+           stopped_velocity_tolerance: 0.05
+           lft_arm_joint1: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint2: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint3: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint4: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint5: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint6: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint7: {trajectory: 0.1, goal: 0.1}
+       stop_trajectory_duration: 0.5
+       state_publish_rate:  25
+       action_monitor_rate: 10
 
     #notice that the grippers joint2 mimics joint1
     #this is why it is not listed under the hand controllers
     rgt_hand_controller:
-    type: "effort_controllers/JointTrajectoryController"
-    joints:
-        - rgt_arm_finger_joint1
-    gains:
-        rgt_arm_finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+       type: "effort_controllers/JointTrajectoryController"
+       joints:
+           - rgt_arm_finger_joint1
+       gains:
+           rgt_arm_finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
 
     lft_hand_controller:
-    type: "effort_controllers/JointTrajectoryController"
-    joints:
-        - lft_arm_finger_joint1
-    gains:
-        lft_arm_finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+       type: "effort_controllers/JointTrajectoryController"
+       joints:
+           - lft_arm_finger_joint1
+       gains:
+           lft_arm_finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
 
 
 
@@ -322,72 +318,72 @@ The remaining part of this step presents guidance how to modify the auto-generat
   The ``ros_controllers.yaml`` file is autogenerated in the  ``panda_multiple_arms_moveit_config/config``. According to the MoveIt Setup Assistant authors, this file is meant for the ros control configuration (this means its content should exactly match the content of ``joint_state_controller.yaml`` and ``trajectory_controller.yaml``). Then, just copy the two files contents into this file. The file should look as follows ::
 
     joint_state_controller:
-    type: joint_state_controller/JointStateController
-    publish_rate: 50  
+       type: joint_state_controller/JointStateController
+       publish_rate: 50  
     
     rgt_arm_trajectory_controller:
-    type: "position_controllers/JointTrajectoryController"
-    joints:
-        - rgt_arm_joint1
-        - rgt_arm_joint2
-        - rgt_arm_joint3
-        - rgt_arm_joint4
-        - rgt_arm_joint5
-        - rgt_arm_joint6
-        - rgt_arm_joint7
-    constraints:
-        goal_time: 0.6
-        stopped_velocity_tolerance: 0.05
-        rgt_arm_joint1: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint2: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint3: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint4: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint5: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint6: {trajectory: 0.1, goal: 0.1}
-        rgt_arm_joint7: {trajectory: 0.1, goal: 0.1}
-    stop_trajectory_duration: 0.5
-    state_publish_rate:  25
-    action_monitor_rate: 10
+       type: "position_controllers/JointTrajectoryController"
+       joints:
+           - rgt_arm_joint1
+           - rgt_arm_joint2
+           - rgt_arm_joint3
+           - rgt_arm_joint4
+           - rgt_arm_joint5
+           - rgt_arm_joint6
+           - rgt_arm_joint7
+       constraints:
+           goal_time: 0.6
+           stopped_velocity_tolerance: 0.05
+           rgt_arm_joint1: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint2: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint3: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint4: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint5: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint6: {trajectory: 0.1, goal: 0.1}
+           rgt_arm_joint7: {trajectory: 0.1, goal: 0.1}
+       stop_trajectory_duration: 0.5
+       state_publish_rate:  25
+       action_monitor_rate: 10
 
     lft_arm_trajectory_controller:
-    type: "position_controllers/JointTrajectoryController"
-    joints:
-        - lft_arm_joint1
-        - lft_arm_joint2
-        - lft_arm_joint3
-        - lft_arm_joint4
-        - lft_arm_joint5
-        - lft_arm_joint6
-        - lft_arm_joint7
-    constraints:
-        goal_time: 0.6
-        stopped_velocity_tolerance: 0.05
-        lft_arm_joint1: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint2: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint3: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint4: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint5: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint6: {trajectory: 0.1, goal: 0.1}
-        lft_arm_joint7: {trajectory: 0.1, goal: 0.1}
-    stop_trajectory_duration: 0.5
-    state_publish_rate:  25
-    action_monitor_rate: 10
+       type: "position_controllers/JointTrajectoryController"
+       joints:
+           - lft_arm_joint1
+           - lft_arm_joint2
+           - lft_arm_joint3
+           - lft_arm_joint4
+           - lft_arm_joint5
+           - lft_arm_joint6
+           - lft_arm_joint7
+       constraints:
+           goal_time: 0.6
+           stopped_velocity_tolerance: 0.05
+           lft_arm_joint1: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint2: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint3: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint4: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint5: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint6: {trajectory: 0.1, goal: 0.1}
+           lft_arm_joint7: {trajectory: 0.1, goal: 0.1}
+       stop_trajectory_duration: 0.5
+       state_publish_rate:  25
+       action_monitor_rate: 10
 
     #notice that the grippers joint2 mimics joint1
     #this is why it is not listed under the hand controllers
     rgt_hand_controller:
-    type: "effort_controllers/JointTrajectoryController"
-    joints:
-        - rgt_arm_finger_joint1
-    gains:
-        rgt_arm_finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+       type: "effort_controllers/JointTrajectoryController"
+       joints:
+           - rgt_arm_finger_joint1
+       gains:
+           rgt_arm_finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
 
     lft_hand_controller:
-    type: "effort_controllers/JointTrajectoryController"
-    joints:
-        - lft_arm_finger_joint1
-    gains:
-        lft_arm_finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+       type: "effort_controllers/JointTrajectoryController"
+       joints:
+           - lft_arm_finger_joint1
+       gains:
+           lft_arm_finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
     
 .. 
     Notice that the namespace and controller names correspond to the names in ``trajectory_controller.yaml`` file.
@@ -467,7 +463,7 @@ We need to prepare a launch file to start three required components for the inte
 
 1. Start the simulated a robot in an empty Gazebo world 
 
-To spawn the panda multiple arms model in a gazebo, we need to prepare a launch file in the ``panda_multiple_arms`` package. Let's call it ``view_panda_multiple_arms_empty_world.launch``. Here are the steps to prepar this file. :: 
+To spawn the panda multiple arms model in a gazebo, we need to prepare a launch file in the ``panda_multiple_arms`` package. Let's call it ``panda_multiple_arms_empty_world.launch``. Here are the steps to prepar this file. :: 
 
     cd ~/ws_moveit
     cd src/panda_multiple_arms/launch 
@@ -516,7 +512,7 @@ The ``bringup_moveit.launch`` contents are as follows. ::
         </include>
 
         <!-- Start the simulated robot in an empty Gazebo world -->
-        <include file="$(find panda_multiple_arms)/launch/view_panda_multiple_arms_empty_world.launch" />
+        <include file="$(find panda_multiple_arms)/launch/panda_multiple_arms_empty_world.launch" />
 
         <!-- Start the controllers and robot state publisher-->
         <include file="$(find panda_multiple_arms)/launch/controller_utils.launch"/>
